@@ -18,12 +18,10 @@ print(" ------------------------------------------------------------------------
 print("   ---------------------------------------------------------------------------")
 print("                                                                 ")
 import subprocess
-print("please enter your interface: eth0 or wlan0 ? ")
-interface=input()
-print("Enter the mac addresss to change: ")
-new_mac = input()
+interface=input("Interface >")
+new_mac = input("New Mac >")
 
-subprocess.run("ifconfig {0} down".format(interface),shell=True)
-subprocess.run("ifconfig {0}  hw ether {1}".format(interface,new_mac),shell=True)
-subprocess.run("ifconfig {0} up".format(interface),shell=True)
-subprocess.run("ifconfig",shell=True)
+subprocess.run(["ifconfig",interface,"down"])
+subprocess.run(["ifconfig",interface,"hw"," ether",new_mac])
+subprocess.run(["ifconfig",interface,"up"])
+subprocess.run(["ifconfig"])
